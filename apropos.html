@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos — Théo Soulat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="portfolio-style.css" />
+</head>
+<body>
+    <nav>
+    <a href="https://www.linkedin.com/in/theo-soulat-701298356" target="_blank" class="nav-linkedin"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+    <ul>
+      <li><a href="portfolio incr.html">Accueil</a></li>
+      <li><a href="entreprise.html">Entreprise</a></li>
+      <li><a href="e6.html">E6</a></li>
+      <li><a href="e7.html">E7</a></li>
+      <li><a href="veille-technologique.html">Veille technologique</a></li>
+      <li><a href="apropos.html" class="active">À propos</a></li>
+    </ul>
+    <a href="portfolio incr.html" class="nav-logo">théo<span>.</span>soulat</a>
+  </nav>
+<section id="apropos">
+    <div class="section-header reveal">
+      <div class="section-label">// À propos</div>
+      <h2 class="section-title">Qui suis-je ?</h2>
+    </div>
+    <div class="about-inner">
+      <div>
+        <div class="about-avatar reveal">TS</div>
+      </div>
+      <div class="about-content reveal">
+        <h2>Je suis <span style="color:var(--accent);">Théo Soulat</span></h2>
+        <p>Étudiant en BTS SIO option SISR en alternance à l'HPEVM (Hôpital Paris Est Val-de-Marne), au sein de la Cellule de Maintenance des Réseaux (CMR). 20 ans, passionné par les infrastructures réseaux et l'administration système.</p>
+        <p>Mon alternance dans un environnement hospitalier multi-sites m'a permis de développer des compétences solides en haute disponibilité, gestion de parc et administration réseau dans un contexte critique et exigeant.</p>
+        <div class="about-infos">
+          <div class="about-info-item"><span>📍</span><span>23 Avenue Louis Granet, 77340 Pontault-Combault</span></div>
+          <div class="about-info-item"><span>📞</span><span>06 35 37 00 42</span></div>
+          <div class="about-info-item"><span>✉️</span><a href="mailto:theoriuitchi@gmail.com">theoriuitchi@gmail.com</a></div>
+          <div class="about-info-item"><span>🎓</span><span>Terminale BAC PRO SN · Lycée IRIS Paris XVIIème → BTS SIO SISR</span></div>
+          <div class="about-info-item"><span>🏀</span><span>Arbitre & E-marqueur officiel de basket-ball — Seine-et-Marne</span></div>
+          <div class="about-info-item"><span>🌐</span><span>Anglais B1 · Français courant · Permis B</span></div>
+        </div>
+        <div class="about-skills-grid">
+          <div class="skill-item">Linux Debian</div>
+          <div class="skill-item">Windows Server</div>
+          <div class="skill-item">Active Directory</div>
+          <div class="skill-item">HAProxy / Heartbeat</div>
+          <div class="skill-item">DHCP / NAT / Routage</div>
+          <div class="skill-item">VLANs / Cisco</div>
+          <div class="skill-item">OCS Inventory / GLPI</div>
+          <div class="skill-item">VMware</div>
+          <div class="skill-item">Apache2 / PHP</div>
+          <div class="skill-item">MariaDB / MySQL</div>
+          <div class="skill-item">Power BI / Power Apps</div>
+          <div class="skill-item">Pack Office / Photoshop</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <span>© 2025 — Théo Soulat · BTS SIO SISR · HPEVM / CMR</span>
+    <span style="color:var(--accent);">theoriuitchi@gmail.com · 06 35 37 00 42</span>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i % 4) * 0.09 + 's';
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>

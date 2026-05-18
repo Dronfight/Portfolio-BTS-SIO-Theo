@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entreprise — Théo Soulat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="portfolio-style.css" />
+</head>
+<body>
+    <nav>
+    <a href="https://www.linkedin.com/in/theo-soulat-701298356" target="_blank" class="nav-linkedin"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+    <ul>
+      <li><a href="portfolio incr.html">Accueil</a></li>
+      <li><a href="entreprise.html" class="active">Entreprise</a></li>
+      <li><a href="e6.html">E6</a></li>
+      <li><a href="e7.html">E7</a></li>
+      <li><a href="veille-technologique.html">Veille technologique</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+    </ul>
+    <a href="portfolio incr.html" class="nav-logo">théo<span>.</span>soulat</a>
+  </nav>
+<section id="entreprise">
+    <div class="section-header reveal">
+      <div class="section-label">// Mon alternance</div>
+      <h2 class="section-title">Entreprise d'accueil</h2>
+      <p class="section-desc">Je réalise mon BTS SIO SISR en alternance au sein de l'HPEVM, un groupement hospitalier multi-sites dans le Val-de-Marne, intégrant la Cellule de Maintenance des Réseaux.</p>
+    </div>
+    <div class="entreprise-inner">
+      <div class="ent-card reveal">
+        <div class="ent-logo">🏥</div>
+        <h3>HPEVM</h3>
+        <p class="ent-subtitle">Hôpital Paris Est Val-de-Marne</p>
+        <div class="info-row">
+          <span class="info-icon">📍</span>
+          <span class="info-text"><strong>Multi-sites</strong> — Groupement hospitalier intégrant plusieurs établissements dans le Val-de-Marne (94)</span>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">🏢</span>
+          <span class="info-text"><strong>Service :</strong> CMR — Cellule de Maintenance des Réseaux</span>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📅</span>
+          <span class="info-text"><strong>Contrat :</strong> Alternance BTS SIO SISR · 2024–2026</span>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">🎯</span>
+          <span class="info-text"><strong>Mission :</strong> Administration et maintenance des infrastructures réseau & système sur l'ensemble des sites hospitaliers</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="env-label">Mes missions à la CMR</div>
+        <ul class="mission-list">
+          <li>Administration et maintenance des infrastructures réseau et système sur l'ensemble des sites de l'HPEVM</li>
+          <li>Gestion du parc informatique hospitalier (OCS Inventory, GLPI, Active Directory)</li>
+          <li>Configuration et supervision des équipements réseau (switches, routeurs, VLANs)</li>
+          <li>Mise en place de solutions de haute disponibilité — cluster HAProxy + Heartbeat pour la continuité de service</li>
+          <li>Configuration de serveurs Linux : DHCP, NAT, routage IP inter-réseaux</li>
+          <li>Support technique auprès des utilisateurs et équipes médicales sur les différents sites</li>
+          <li>Sécurisation des accès et gestion des droits utilisateurs via contrôleur de domaine Active Directory</li>
+        </ul>
+        <div class="env-tech" style="margin-top:1.8rem;">
+          <div class="env-label">Environnement technique</div>
+          <div class="tag-row">
+            <span class="tag">Linux Debian</span>
+            <span class="tag">Windows Server</span>
+            <span class="tag">Active Directory</span>
+            <span class="tag">HAProxy</span>
+            <span class="tag">Heartbeat</span>
+            <span class="tag">GLPI</span>
+            <span class="tag">OCS Inventory</span>
+            <span class="tag">DHCP / NAT</span>
+            <span class="tag">VLANs</span>
+            <span class="tag">VMware</span>
+            <span class="tag">Apache2</span>
+            <span class="tag">MariaDB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <span>© 2025 — Théo Soulat · BTS SIO SISR · HPEVM / CMR</span>
+    <span style="color:var(--accent);">theoriuitchi@gmail.com · 06 35 37 00 42</span>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i % 4) * 0.09 + 's';
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>
