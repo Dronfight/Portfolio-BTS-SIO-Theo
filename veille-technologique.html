@@ -27,7 +27,7 @@
       margin-bottom: 2rem;
     }
     
-    /* Ligne verticale de décoration dynamique */
+    /* Ligne verticale décorative */
     .theme-header::before {
       content: '';
       position: absolute;
@@ -37,7 +37,7 @@
       width: 4px;
     }
     
-    /* Couleurs spécifiques par thématique */
+    /* Couleurs des barres verticales */
     .t1 .theme-header::before { background-color: #0052cc; } /* Bleu Image 1 */
     .t2 .theme-header::before { background-color: #00a344; } /* Vert Image 2 */
 
@@ -57,14 +57,14 @@
       font-family: 'Syne', sans-serif;
       font-size: 2.2rem;
       font-weight: 800;
-      color: #0f172a;
+      color: #ffffff; /* Forcé en blanc pour ressortir sur ton fond sombre */
       margin: 0 0 1rem 0;
       letter-spacing: -0.02em;
     }
 
     .theme-desc {
       font-size: 1.05rem;
-      color: #64748b;
+      color: #94a3b8; /* Forcé en gris clair pour ton fond sombre */
       line-height: 1.6;
       max-width: 900px;
       margin: 0;
@@ -75,6 +75,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     @media (max-width: 992px) {
@@ -84,23 +85,23 @@
       .veille-grid { grid-template-columns: 1fr; }
     }
 
-    /* Cartes blanches alignées */
+    /* Cartes blanches bien visibles sur fond noir */
     .veille-card {
-      background: #ffffff;
+      background: #ffffff !important; /* Forcé en blanc pour casser le fond du site */
       border: 1px solid #e2e8f0;
       border-radius: 12px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .veille-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     }
 
-    /* Bannière d'illustration texte */
+    /* Zone d'en-tête de carte */
     .card-banner {
       height: 130px;
       background: #f8fafc;
@@ -121,6 +122,7 @@
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+      background: #ffffff;
     }
 
     .card-meta {
@@ -144,20 +146,20 @@
     .card-date {
       font-family: var(--mono);
       font-size: 0.7rem;
-      color: #94a3b8;
+      color: #64748b;
     }
 
     .card-content h3 {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #0f172a;
+      color: #0f172a !important; /* Forcé en sombre pour être lisible sur la carte blanche */
       margin: 0 0 0.75rem 0;
       line-height: 1.4;
     }
 
     .card-content p {
       font-size: 0.85rem;
-      color: #475569;
+      color: #334155 !important; /* Forcé en sombre pour la lisible sur la carte blanche */
       line-height: 1.6;
       margin: 0 0 1.5rem 0;
       flex-grow: 1;
@@ -173,8 +175,9 @@
       margin-top: auto;
     }
     .card-source a {
-      color: #2563eb;
+      color: #2563eb !important;
       text-decoration: none;
+      font-weight: 600;
     }
     .card-source a:hover {
       text-decoration: underline;
@@ -195,7 +198,7 @@
     <a href="index.html" class="nav-logo">théo<span>.</span>soulat</a>
   </nav>
 
-  <section id="veille" class="page-shell">
+  <section id="veille" class="page-shell" style="padding-top: 120px;">
     <div class="veille-container">
 
       <div class="theme-section t1 reveal">
@@ -228,93 +231,4 @@
                 <span class="card-date">Mars 2025</span>
               </div>
               <h3>Sécuriser un Active Directory face aux attaques Pass-the-Hash</h3>
-              <p>Les attaques Pass-the-Hash permettent à un attaquant de se connecter à des ressources réseau en réutilisant des hachages NTLM volés. Le CERT-FR recommande la mise en place de Protected Users, la désactivation de NTLM et l'utilisation de comptes de service à privilèges limités.</p>
-              <div class="card-source">🔗 Source : <a href="https://www.cert.ssi.gouv.fr" target="_blank" rel="noopener">cert.ssi.gouv.fr</a></div>
-            </div>
-          </div>
-
-          <div class="veille-card">
-            <div class="card-banner" style="background: #fef2f2; color: #991b1b;">Ransomware</div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="card-badge">Ransomware</span>
-                <span class="card-date">Mai 2025</span>
-              </div>
-              <h3>LockBit 3.0 : ciblage des serveurs Windows Exchange non patchés</h3>
-              <p>Le groupe LockBit 3.0 a exploité des vulnérabilités connues de Microsoft Exchange pour déployer son ransomware sur des serveurs non mis à jour. Cet incident rappelle l'importance critique de la gestion des correctifs (patch management) dans toute infrastructure Windows Server.</p>
-              <div class="card-source">🔗 Source : <a href="https://www.lemagit.fr" target="_blank" rel="noopener">lemagit.fr</a></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="theme-section t2 reveal">
-        <div class="theme-header">
-          <div class="theme-label">Thématique 2</div>
-          <h2 class="theme-title">Automatisation de l'administration système</h2>
-          <p class="theme-desc">Les outils et méthodes modernes pour gérer, déployer et superviser des systèmes Linux et Windows de façon plus efficace.</p>
-        </div>
-        
-        <div class="veille-grid">
-          
-          <div class="veille-card">
-            <div class="card-banner" style="background: #fdf2f8; color: #9d174d;">Ansible</div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="card-badge">Ansible</span>
-                <span class="card-date">Février 2025</span>
-              </div>
-              <h3>Industrialisation des configurations serveurs avec Ansible</h3>
-              <p>Ansible permet de standardiser et d'automatiser le déploiement de serveurs Windows et Linux sans agent intermédiaire. À l'aide de playbooks YAML, l'administrateur exécute des tâches complexes d'installation et de sécurisation de façon homogène sur l'ensemble du parc informatique.</p>
-              <div class="card-source">🔗 Source : <a href="https://www.redhat.com" target="_blank" rel="noopener">redhat.com</a></div>
-            </div>
-          </div>
-
-          <div class="veille-card">
-            <div class="card-banner" style="background: #f5f3ff; color: #5b21b6;">Terraform</div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="card-badge">Terraform</span>
-                <span class="card-date">Avril 2025</span>
-              </div>
-              <h3>Infrastructure as Code (IaC) appliquée à la virtualisation</h3>
-              <p>L'Infrastructure as Code révolutionne le provisionnement des infrastructures. Avec des outils comme Terraform, les administrateurs définissent leurs clusters de machines virtuelles (VMware vSphere, Proxmox) sous forme de fichiers texte versionnés, simplifiant les plans de reprise d'activité.</p>
-              <div class="card-source">🔗 Source : <a href="https://www.terraform.io" target="_blank" rel="noopener">terraform.io</a></div>
-            </div>
-          </div>
-
-          <div class="veille-card">
-            <div class="card-banner" style="background: #f0fdf4; color: #166534;">Supervision</div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="card-badge">Zabbix / API</span>
-                <span class="card-date">Mai 2025</span>
-              </div>
-              <h3>Automatisation de la supervision réseau via APIs tierces</h3>
-              <p>Le couplage des gestionnaires de parc comme GLPI avec les outils de supervision (Zabbix, Centreon) via des scripts automatisés élimine la déclaration manuelle des serveurs. Tout nouvel équipement détecté est immédiatement inscrit au monitoring et configuré pour l'envoi d'alertes.</p>
-              <div class="card-source">🔗 Source : <a href="https://glpi-project.org" target="_blank" rel="noopener">glpi-project.org</a></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    <span>© 2025 — Théo Soulat · BTS SIO SISR · HPEVM / CMR</span>
-    <span style="color:var(--accent);">theoriuitchi@gmail.com</span>
-  </footer>
-
-  <script>
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach((el) => {
-      obs.observe(el);
-    });
-  </script>
-</body>
-</html>
+              <p>Les attaques Pass-the-Hash permettent à un attaquant de se connecter à des ressources réseau en réutilisant des hachages NTLM volés. Le CERT-FR recommande la mise en place de Protected Users, la désactivation de NTLM
