@@ -14,6 +14,17 @@
     }
     .veille-full { max-width: 960px; margin: 0 auto; padding: 0 2rem 5rem; display: flex; flex-direction: column; gap: 2rem; }
 
+    .theme-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--accent);
+    }
+
     .veille-article {
       background: var(--bg2); border: 1px solid var(--border); border-radius: 16px;
       padding: 2rem 2.2rem; position: relative; overflow: hidden;
@@ -37,6 +48,8 @@
     .veille-source a:hover { color: #fff; }
     .veille-source::before { content: '↗'; color: var(--accent); font-size: .75rem; flex-shrink: 0; }
     .sources-label { font-family: var(--mono); font-size: .65rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .5rem; margin-top: 1.2rem; }
+    .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .tag { background: rgba(91,111,255,0.1); color: var(--accent2); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-family: var(--mono); }
   </style>
 </head>
 <body>
@@ -56,97 +69,75 @@
   <section id="veille" class="page-shell">
     <div class="section-header reveal">
       <div class="section-label">// Veille technologique</div>
-      <h2 class="section-title">Intelligence Artificielle<br>&amp; IT</h2>
-      <p class="section-desc">Suivi des avancées de l'IA appliquées aux systèmes d'information, à l'administration réseau et aux infrastructures informatiques. Sources vérifiées, actualité régulièrement mise à jour.</p>
+      <h2 class="section-title">Sécurité &amp;<br>Infrastructures Modernes</h2>
+      <p class="section-desc">Suivi des évolutions technologiques axé sur la sécurisation des réseaux d'entreprise et l'automatisation des infrastructures informatiques. Sources vérifiées et actualisées.</p>
     </div>
 
     <div class="veille-full">
 
-      <!-- ARTICLE 1 -->
+      <div class="theme-title reveal">Thème 1 : Cybersécurité &amp; Architecture Zero Trust</div>
+
       <div class="veille-article reveal">
         <div class="veille-article-header">
-          <h3>Les LLMs dans l'administration système — vers l'AIOps</h3>
-          <span class="veille-date">2024 – 2025</span>
+          <h3>La généralisation du modèle Zero Trust Network Access (ZTNA)</h3>
+          <span class="veille-date">2024 – 2026</span>
         </div>
-        <p>Les grands modèles de langage (LLM) comme GPT-4, Gemini ou Claude s'intègrent progressivement dans les environnements IT sous le concept d'<strong style="color:var(--text)">AIOps</strong> (Artificial Intelligence for IT Operations). Ces outils permettent d'automatiser l'analyse des logs, la détection d'anomalies réseau et la génération de scripts de configuration. Des plateformes comme <strong style="color:var(--text)">Microsoft Copilot for Azure</strong> proposent déjà une assistance intelligente pour la gestion des ressources cloud, réduisant le temps de diagnostic des incidents.</p>
-        <p>Dans un contexte hospitalier comme celui de l'HPEVM, l'IA pourrait automatiser la supervision des équipements réseau critiques et déclencher des alertes prédictives avant qu'une panne survienne, renforçant ainsi la continuité de service.</p>
-        <div class="tag-row"><span class="tag">LLM</span><span class="tag">AIOps</span><span class="tag">Azure Copilot</span><span class="tag">Automatisation</span></div>
+        <p>Le modèle traditionnel de sécurité périmétrique ("confiance totale à l'intérieur, méfiance à l'extérieur") devient obsolète. Le <strong style="color:var(--text)">Zero Trust (ZTNA)</strong> impose le principe du "ne jamais faire confiance, toujours vérifier". Chaque demande d'accès au réseau, qu'elle provienne de l'interne ou de l'externe, doit être authentifiée, autorisée et chiffrée de manière dynamique selon le contexte de l'utilisateur et de la machine.</p>
+        <p>Dans un cadre hospitalier (HPEVM), la mise en place du ZTNA permet de segmenter finement les accès aux serveurs contenant des données de santé critiques, empêchant un attaquant de rebondir sur tout le réseau si un poste client est compromis.</p>
+        <div class="tag-row"><span class="tag">Zero Trust</span><span class="tag">ZTNA</span><span class="tag">Sécurité Réseau</span><span class="tag">Segmentation</span></div>
         <div class="sources-label">Sources</div>
         <div class="veille-source-list">
-          <div class="veille-source"><a href="https://azure.microsoft.com/fr-fr/products/copilot" target="_blank" rel="noopener">Microsoft Copilot for Azure — azure.microsoft.com</a></div>
-          <div class="veille-source"><a href="https://www.gartner.com/en/information-technology/glossary/aiops-artificial-intelligence-operations" target="_blank" rel="noopener">Gartner — Définition AIOps — gartner.com</a></div>
-          <div class="veille-source"><a href="https://www.lemagit.fr/conseil/AIOps-lIA-au-service-des-operations-IT" target="_blank" rel="noopener">LeMagIT — AIOps, l'IA au service des opérations IT — lemagit.fr</a></div>
+          <div class="veille-source"><a href="https://www.ssi.gouv.fr/actualite/publication-du-guide-le-modele-zero-trust/" target="_blank" rel="noopener">ANSSI — Publication du guide sur le modèle Zero Trust — ssi.gouv.fr</a></div>
+          <div class="veille-source"><a href="https://learn.microsoft.com/fr-fr/security/zero-trust/" target="_blank" rel="noopener">Microsoft — Documentation sur l'architecture Zero Trust — learn.microsoft.com</a></div>
+          <div class="veille-source"><a href="https://www.gartner.com/en/information-technology/glossary/zero-trust-network-access-ztna" target="_blank" rel="noopener">Gartner — Definition of Zero Trust Network Access — gartner.com</a></div>
         </div>
       </div>
 
-      <!-- ARTICLE 2 -->
       <div class="veille-article reveal">
         <div class="veille-article-header">
-          <h3>GitHub Copilot &amp; assistants IA pour les techniciens IT</h3>
-          <span class="veille-date">2024 – 2025</span>
+          <h3>Protection face aux Ransomwares dans les structures de santé</h3>
+          <span class="veille-date">2025 – 2026</span>
         </div>
-        <p><strong style="color:var(--text)">GitHub Copilot</strong>, initialement conçu pour les développeurs, s'étend aux techniciens système avec des suggestions de scripts Bash, PowerShell et Python. Des outils similaires comme <strong style="color:var(--text)">Warp</strong> (terminal IA) intègrent directement un assistant conversationnel dans la ligne de commande, capable d'expliquer des commandes, de suggérer des corrections et d'automatiser des tâches répétitives d'administration.</p>
-        <p>Ces outils réduisent significativement le temps passé à chercher de la documentation et permettent aux administrateurs juniors de monter en compétences plus rapidement sur des environnements complexes.</p>
-        <div class="tag-row"><span class="tag">GitHub Copilot</span><span class="tag">Warp</span><span class="tag">Bash</span><span class="tag">PowerShell</span></div>
+        <p>Les établissements de santé restent des cibles privilégiées pour les attaques par rançongiciel (ransomware). La stratégie de défense moderne repose sur la mise en place de politiques de sauvegardes immuables (3-2-1-1-0) et le déploiement d'outils <strong style="color:var(--text)">EDR (Endpoint Detection and Response)</strong>. Ces agents analysent le comportement des serveurs et postes de travail pour bloquer instantanément tout processus de chiffrement malveillant.</p>
+        <p>L'ANSSI et le CERT-FR rappellent régulièrement l'importance durcir les configurations Active Directory et de restreindre les privilèges d'administration pour limiter la surface d'attaque.</p>
+        <div class="tag-row"><span class="tag">Ransomware</span><span class="tag">EDR</span><span class="tag">Sauvegarde Immuable</span><span class="tag">Santé</span></div>
         <div class="sources-label">Sources</div>
         <div class="veille-source-list">
-          <div class="veille-source"><a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot — github.com</a></div>
-          <div class="veille-source"><a href="https://www.warp.dev" target="_blank" rel="noopener">Warp — Terminal avec IA intégrée — warp.dev</a></div>
-          <div class="veille-source"><a href="https://www.01net.com/actualites/github-copilot-desormais-disponible-pour-tous-les-developpeurs.html" target="_blank" rel="noopener">01net — GitHub Copilot disponible pour tous — 01net.com</a></div>
+          <div class="veille-source"><a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener">CERT-FR — Alertes, avis de sécurité et rapports de menaces — cert.ssi.gouv.fr</a></div>
+          <div class="veille-source"><a href="https://www.cybermalveillance.gouv.fr/tous-nos-contenus/fiches-pratiques/rancongiciels-ransomwares" target="_blank" rel="noopener">Cybermalveillance.gouv.fr — Comprendre et se protéger des ransomwares — cybermalveillance.gouv.fr</a></div>
+          <div class="veille-source"><a href="https://www.cyber.gouv.fr/publications/etat-de-la-menace-rancongiciels" target="_blank" rel="noopener">ANSSI — État de la menace liée aux rançongiciels — cyber.gouv.fr</a></div>
         </div>
       </div>
 
-      <!-- ARTICLE 3 -->
       <div class="veille-article reveal">
         <div class="veille-article-header">
-          <h3>IA et cybersécurité — détection des menaces par apprentissage automatique</h3>
-          <span class="veille-date">2024 – 2025</span>
-        </div>
-        <p>Les solutions de <strong style="color:var(--text)">SIEM nouvelle génération</strong> (Security Information and Event Management) intègrent désormais des modèles de machine learning pour détecter des comportements anormaux sur le réseau en temps réel. Des acteurs comme <strong style="color:var(--text)">Darktrace</strong> ou <strong style="color:var(--text)">Microsoft Sentinel</strong> utilisent l'IA pour analyser des millions d'événements par seconde et identifier des menaces que les règles statiques ne peuvent pas détecter.</p>
-        <p>L'ANSSI recommande aux établissements de santé de se doter de telles solutions, les hôpitaux étant des cibles prioritaires des ransomwares depuis 2020 (attaques du CHSF de Corbeil, du CHU de Rouen, etc.).</p>
-        <div class="tag-row"><span class="tag">SIEM</span><span class="tag">Darktrace</span><span class="tag">Microsoft Sentinel</span><span class="tag">ANSSI</span><span class="tag">Ransomware</span></div>
-        <div class="sources-label">Sources</div>
-        <div class="veille-source-list">
-          <div class="veille-source"><a href="https://www.ssi.gouv.fr/guide/securite-des-systemes-dinformation-de-sante/" target="_blank" rel="noopener">ANSSI — Sécurité des SI de santé — ssi.gouv.fr</a></div>
-          <div class="veille-source"><a href="https://www.darktrace.com/fr/" target="_blank" rel="noopener">Darktrace — IA pour la cybersécurité — darktrace.com</a></div>
-          <div class="veille-source"><a href="https://azure.microsoft.com/fr-fr/products/microsoft-sentinel" target="_blank" rel="noopener">Microsoft Sentinel — azure.microsoft.com</a></div>
-          <div class="veille-source"><a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener">CERT-FR — Alertes et avis de sécurité — cert.ssi.gouv.fr</a></div>
-        </div>
-      </div>
-
-      <!-- ARTICLE 4 -->
-      <div class="veille-article reveal">
-        <div class="veille-article-header">
-          <h3>IA générative et gestion de parc — GLPI &amp; automatisation</h3>
+          <h3>L'évolution du MFA et la lutte contre le "MFA Fatigue"</h3>
           <span class="veille-date">2025</span>
         </div>
-        <p>Les outils de gestion de parc comme <strong style="color:var(--text)">GLPI</strong> commencent à intégrer des fonctionnalités d'IA pour la priorisation automatique des tickets, la suggestion de solutions basées sur l'historique des incidents et la génération de rapports d'inventaire intelligents. Des plugins tiers expérimentaux connectent GLPI à des APIs de LLMs pour répondre automatiquement aux demandes utilisateurs simples.</p>
-        <p>Cette tendance rejoint le concept plus large d'<strong style="color:var(--text)">ITSM augmenté par l'IA</strong> (IT Service Management), qui vise à réduire la charge des techniciens en automatisant le traitement de niveau 1.</p>
-        <div class="tag-row"><span class="tag">GLPI</span><span class="tag">ITSM</span><span class="tag">IA générative</span><span class="tag">Ticketing</span></div>
+        <p>L'authentification multifacteur (MFA) est indispensable, mais les attaquants la contournent désormais via l'ingénierie sociale ou des attaques par saturation d'approbations (<strong style="color:var(--text)">MFA Fatigue</strong>). La tendance technique s'oriente vers le MFA basé sur le contexte (le "Number Matching", où l'utilisateur doit saisir sur son téléphone le numéro affiché à l'écran de connexion) et le déploiement de clés de sécurité physiques FIDO2 (Passkeys).</p>
+        <p>Sécuriser les accès VPN des prestataires et du personnel en télétravail à l'HPEVM avec ce type de MFA renforcé élimine la majorité des risques de compromission d'identifiants.</p>
+        <div class="tag-row"><span class="tag">MFA</span><span class="tag">FIDO2</span><span class="tag">Sécurité des accès</span><span class="tag">Passkeys</span></div>
         <div class="sources-label">Sources</div>
         <div class="veille-source-list">
-          <div class="veille-source"><a href="https://glpi-project.org/" target="_blank" rel="noopener">GLPI Project — glpi-project.org</a></div>
-          <div class="veille-source"><a href="https://www.lebigdata.fr/itsm-intelligence-artificielle" target="_blank" rel="noopener">LeBigData.fr — ITSM et intelligence artificielle — lebigdata.fr</a></div>
-          <div class="veille-source"><a href="https://www.journaldunet.com/solutions/dsi/1521345-ia-et-gestion-du-support-it/" target="_blank" rel="noopener">Journal du Net — IA et gestion du support IT — journaldunet.com</a></div>
+          <div class="veille-source"><a href="https://www.ssi.gouv.fr/guide/recommandations-relatives-a-lauthentification-multifacteur-et-aux-mots-de-passe/" target="_blank" rel="noopener">ANSSI — Recommandations relatives à l'authentification multifacteur — ssi.gouv.fr</a></div>
+          <div class="veille-source"><a href="https://fidoalliance.org/passkeys/?lang=fr" target="_blank" rel="noopener">FIDO Alliance — Les Passkeys et la technologie de connexion FIDO — fidoalliance.org</a></div>
+          <div class="veille-source"><a href="https://www.lemagit.fr/definition/Fatigue-du-MFA-Attaque-par-bombardement-de-notifications" target="_blank" rel="noopener">LeMagIT — Comprendre et contrer l'attaque par fatigue du MFA — lemagit.fr</a></div>
         </div>
       </div>
 
-    </div>
-  </section>
 
-  <footer>
-    <span>© 2025 — Théo Soulat · BTS SIO SISR · HPEVM / CMR</span>
-    <span style="color:var(--accent);">theoriuitchi@gmail.com</span>
-  </footer>
+      <div class="theme-title reveal" style="margin-top: 4rem;">Thème 2 : Automatisation &amp; Infrastructure as Code (IaC)</div>
 
-  <script>
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = (i % 4) * 0.09 + 's';
-      obs.observe(el);
-    });
-  </script>
-</body>
+      <div class="veille-article reveal">
+        <div class="veille-article-header">
+          <h3>L'essor d'Ansible pour la gestion de configurations réseaux</h3>
+          <span class="veille-date">2024 – 2026</span>
+        </div>
+        <p><strong style="color:var(--text)">Ansible</strong> est devenu l'outil de référence pour les administrateurs système et réseau (NetDevOps). Sans agent à installer sur les machines cibles (utilisation de SSH ou WinRM), il permet d'automatiser le déploiement de serveurs Linux/Windows et la configuration d'équipements réseau (commutateurs Cisco, pare-feu, etc.) via des Playbooks écrits en YAML.</p>
+        <p>Pour un parc informatique d'envergure, Ansible garantit l'homogénéité des configurations logicielles, le déploiement rapide des correctifs de sécurité et évite les erreurs humaines dues aux configurations manuelles par interface graphique.</p>
+        <div class="tag-row"><span class="tag">Ansible</span><span class="tag">Automation</span><span class="tag">YAML</span><span class="tag">NetDevOps</span></div>
+        <div class="sources-label">Sources</div>
+        <div class="veille-source-list">
+          <div class="veille-source"><a href="https://www.redhat.com/fr/technologies/management/ansible" target="_blank" rel="noopener">Red Hat — Présentation et fonctionnement d'Ansible — redhat.com</a></div>
+          <div class="veille-source"><a href
 </html>
