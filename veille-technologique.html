@@ -9,47 +9,176 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="portfolio-style.css" />
   <style>
-    .veille-hero {
-      max-width: 960px; margin: 0 auto 3rem; padding: 0 2rem;
+    /* Structure globale de la page */
+    .veille-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
     }
-    .veille-full { max-width: 960px; margin: 0 auto; padding: 0 2rem 5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    .theme-section {
+      margin-bottom: 5rem;
+    }
+
+    /* Style des en-têtes conformes aux images */
+    .theme-header {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    /* Ligne verticale de décoration dynamique */
+    .theme-header::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 4px;
+      width: 4px;
+    }
+    
+    /* Couleurs spécifiques par thématique */
+    .t1 .theme-header::before { background-color: #0052cc; } /* Bleu Image 1 */
+    .t2 .theme-header::before { background-color: #00a344; } /* Vert Image 2 */
+
+    .theme-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    
+    .t1 .theme-label { color: #0052cc; }
+    .t2 .theme-label { color: #00a344; }
 
     .theme-title {
       font-family: 'Syne', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #fff;
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
-      padding-left: 0.5rem;
-      border-left: 3px solid var(--accent);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 1rem 0;
+      letter-spacing: -0.02em;
     }
 
-    .veille-article {
-      background: var(--bg2); border: 1px solid var(--border); border-radius: 16px;
-      padding: 2rem 2.2rem; position: relative; overflow: hidden;
-      transition: border-color .3s, transform .3s;
+    .theme-desc {
+      font-size: 1.05rem;
+      color: #64748b;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0;
     }
-    .veille-article:hover { border-color: rgba(91,111,255,0.35); transform: translateY(-3px); }
-    .veille-article::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
+
+    /* Grille d'alignement des 3 cartes */
+    .veille-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
-    .veille-article-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    .veille-article h3 { font-size: 1.1rem; font-weight: 700; letter-spacing: -.01em; margin: 0; }
-    .veille-date { font-family: var(--mono); font-size: .67rem; color: var(--accent); border: 1px solid rgba(91,111,255,.3); padding: .25rem .6rem; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
-    .veille-article p { font-family: var(--mono); font-size: .82rem; color: var(--muted); line-height: 1.85; margin: 0 0 1.1rem; }
-    .veille-source-list { display: flex; flex-direction: column; gap: .45rem; margin-top: 1rem; }
-    .veille-source {
-      display: flex; align-items: center; gap: .6rem;
-      font-family: var(--mono); font-size: .72rem; color: var(--muted);
+
+    @media (max-width: 992px) {
+      .veille-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .veille-source a { color: var(--accent2); text-decoration: none; transition: color .2s; }
-    .veille-source a:hover { color: #fff; }
-    .veille-source::before { content: '↗'; color: var(--accent); font-size: .75rem; flex-shrink: 0; }
-    .sources-label { font-family: var(--mono); font-size: .65rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .5rem; margin-top: 1.2rem; }
-    .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
-    .tag { background: rgba(91,111,255,0.1); color: var(--accent2); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-family: var(--mono); }
+    @media (max-width: 768px) {
+      .veille-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Cartes blanches alignées */
+    .veille-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .veille-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Bannière d'illustration texte */
+    .card-banner {
+      height: 130px;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e293b;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-badge {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    
+    .t1 .card-badge { background: #eff6ff; color: #0052cc; }
+    .t2 .card-badge { background: #f0fdf4; color: #00a344; }
+
+    .card-date {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+
+    .card-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 0.75rem 0;
+      line-height: 1.4;
+    }
+
+    .card-content p {
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.6;
+      margin: 0 0 1.5rem 0;
+      flex-grow: 1;
+    }
+
+    /* Zone de lien source */
+    .card-source {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: #64748b;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 0.75rem;
+      margin-top: auto;
+    }
+    .card-source a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .card-source a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -67,112 +196,107 @@
   </nav>
 
   <section id="veille" class="page-shell">
-    <div class="section-header reveal">
-      <div class="section-label">// Veille technologique</div>
-      <h2 class="section-title">Sécurité &amp;<br>Infrastructures Modernes</h2>
-      <p class="section-desc">Suivi des évolutions technologiques axé sur la sécurisation des réseaux d'entreprise et l'automatisation des infrastructures informatiques. Sources vérifiées et actualisées.</p>
-    </div>
+    <div class="veille-container">
 
-    <div class="veille-full">
-
-      <div class="theme-title reveal">Thème 1 : Cybersécurité &amp; Architecture Zero Trust</div>
-
-      <div class="veille-article reveal">
-        <div class="veille-article-header">
-          <h3>La généralisation du modèle Zero Trust Network Access (ZTNA)</h3>
-          <span class="veille-date">2024 – 2026</span>
+      <div class="theme-section t1 reveal">
+        <div class="theme-header">
+          <div class="theme-label">Thématique 1</div>
+          <h2 class="theme-title">Cybersécurité des systèmes d'exploitation</h2>
+          <p class="theme-desc">Comment les vulnérabilités affectent Windows et Linux, et comment les administrateurs systèmes s'en protègent au quotidien.</p>
         </div>
-        <p>Le modèle traditionnel de sécurité périmétrique ("confiance totale à l'intérieur, méfiance à l'extérieur") devient obsolète. Le <strong style="color:var(--text)">Zero Trust (ZTNA)</strong> impose le principe du "ne jamais faire confiance, toujours vérifier". Chaque demande d'accès au réseau, qu'elle provienne de l'interne ou de l'externe, doit être authentifiée, autorisée et chiffrée de manière dynamique selon le contexte de l'utilisateur et de la machine.</p>
-        <p>Dans un cadre hospitalier (HPEVM), la mise en place du ZTNA permet de segmenter finement les accès aux serveurs contenant des données de santé critiques, empêchant un attaquant de rebondir sur tout le réseau si un poste client est compromis.</p>
-        <div class="tag-row"><span class="tag">Zero Trust</span><span class="tag">ZTNA</span><span class="tag">Sécurité Réseau</span><span class="tag">Segmentation</span></div>
-        <div class="sources-label">Sources</div>
-        <div class="veille-source-list">
-          <div class="veille-source"><a href="https://www.ssi.gouv.fr/actualite/publication-du-guide-le-modele-zero-trust/" target="_blank" rel="noopener">ANSSI — Publication du guide sur le modèle Zero Trust — ssi.gouv.fr</a></div>
-          <div class="veille-source"><a href="https://learn.microsoft.com/fr-fr/security/zero-trust/" target="_blank" rel="noopener">Microsoft — Documentation sur l'architecture Zero Trust — learn.microsoft.com</a></div>
-          <div class="veille-source"><a href="https://www.gartner.com/en/information-technology/glossary/zero-trust-network-access-ztna" target="_blank" rel="noopener">Gartner — Definition of Zero Trust Network Access — gartner.com</a></div>
+        
+        <div class="veille-grid">
+          
+          <div class="veille-card">
+            <div class="card-banner" style="background: #eff6ff; color: #1e40af;">Microsoft</div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-badge">Windows</span>
+                <span class="card-date">Janvier 2025</span>
+              </div>
+              <h3>Le Patch Tuesday de Microsoft — Janvier 2025</h3>
+              <p>Chaque deuxième mardi du mois, Microsoft publie ses correctifs de sécurité. En janvier 2025, 159 vulnérabilités ont été corrigées, dont 8 critiques affectant Windows Server et le noyau Windows. Ces mises à jour sont essentielles pour tout administrateur système gérant un parc Windows.</p>
+              <div class="card-source">🔗 Source : <a href="https://msrc.microsoft.com" target="_blank" rel="noopener">msrc.microsoft.com</a></div>
+            </div>
+          </div>
+
+          <div class="veille-card">
+            <div class="card-banner" style="background: #f8fafc; color: #334155;">Active Directory</div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-badge">Active Directory</span>
+                <span class="card-date">Mars 2025</span>
+              </div>
+              <h3>Sécuriser un Active Directory face aux attaques Pass-the-Hash</h3>
+              <p>Les attaques Pass-the-Hash permettent à un attaquant de se connecter à des ressources réseau en réutilisant des hachages NTLM volés. Le CERT-FR recommande la mise en place de Protected Users, la désactivation de NTLM et l'utilisation de comptes de service à privilèges limités.</p>
+              <div class="card-source">🔗 Source : <a href="https://www.cert.ssi.gouv.fr" target="_blank" rel="noopener">cert.ssi.gouv.fr</a></div>
+            </div>
+          </div>
+
+          <div class="veille-card">
+            <div class="card-banner" style="background: #fef2f2; color: #991b1b;">Ransomware</div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-badge">Ransomware</span>
+                <span class="card-date">Mai 2025</span>
+              </div>
+              <h3>LockBit 3.0 : ciblage des serveurs Windows Exchange non patchés</h3>
+              <p>Le groupe LockBit 3.0 a exploité des vulnérabilités connues de Microsoft Exchange pour déployer son ransomware sur des serveurs non mis à jour. Cet incident rappelle l'importance critique de la gestion des correctifs (patch management) dans toute infrastructure Windows Server.</p>
+              <div class="card-source">🔗 Source : <a href="https://www.lemagit.fr" target="_blank" rel="noopener">lemagit.fr</a></div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="veille-article reveal">
-        <div class="veille-article-header">
-          <h3>Protection face aux Ransomwares dans les structures de santé</h3>
-          <span class="veille-date">2025 – 2026</span>
+      <div class="theme-section t2 reveal">
+        <div class="theme-header">
+          <div class="theme-label">Thématique 2</div>
+          <h2 class="theme-title">Automatisation de l'administration système</h2>
+          <p class="theme-desc">Les outils et méthodes modernes pour gérer, déployer et superviser des systèmes Linux et Windows de façon plus efficace.</p>
         </div>
-        <p>Les établissements de santé restent des cibles privilégiées pour les attaques par rançongiciel (ransomware). La stratégie de défense moderne repose sur la mise en place de politiques de sauvegardes immuables (3-2-1-1-0) et le déploiement d'outils <strong style="color:var(--text)">EDR (Endpoint Detection and Response)</strong>. Ces agents analysent le comportement des serveurs et postes de travail pour bloquer instantanément tout processus de chiffrement malveillant.</p>
-        <p>L'ANSSI et le CERT-FR rappellent régulièrement l'importance durcir les configurations Active Directory et de restreindre les privilèges d'administration pour limiter la surface d'attaque.</p>
-        <div class="tag-row"><span class="tag">Ransomware</span><span class="tag">EDR</span><span class="tag">Sauvegarde Immuable</span><span class="tag">Santé</span></div>
-        <div class="sources-label">Sources</div>
-        <div class="veille-source-list">
-          <div class="veille-source"><a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener">CERT-FR — Alertes, avis de sécurité et rapports de menaces — cert.ssi.gouv.fr</a></div>
-          <div class="veille-source"><a href="https://www.cybermalveillance.gouv.fr/tous-nos-contenus/fiches-pratiques/rancongiciels-ransomwares" target="_blank" rel="noopener">Cybermalveillance.gouv.fr — Comprendre et se protéger des ransomwares — cybermalveillance.gouv.fr</a></div>
-          <div class="veille-source"><a href="https://www.cyber.gouv.fr/publications/etat-de-la-menace-rancongiciels" target="_blank" rel="noopener">ANSSI — État de la menace liée aux rançongiciels — cyber.gouv.fr</a></div>
-        </div>
-      </div>
+        
+        <div class="veille-grid">
+          
+          <div class="veille-card">
+            <div class="card-banner" style="background: #fdf2f8; color: #9d174d;">Ansible</div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-badge">Ansible</span>
+                <span class="card-date">Février 2025</span>
+              </div>
+              <h3>Industrialisation des configurations serveurs avec Ansible</h3>
+              <p>Ansible permet de standardiser et d'automatiser le déploiement de serveurs Windows et Linux sans agent intermédiaire. À l'aide de playbooks YAML, l'administrateur exécute des tâches complexes d'installation et de sécurisation de façon homogène sur l'ensemble du parc informatique.</p>
+              <div class="card-source">🔗 Source : <a href="https://www.redhat.com" target="_blank" rel="noopener">redhat.com</a></div>
+            </div>
+          </div>
 
-      <div class="veille-article reveal">
-        <div class="veille-article-header">
-          <h3>L'évolution du MFA et la lutte contre le "MFA Fatigue"</h3>
-          <span class="veille-date">2025</span>
-        </div>
-        <p>L'authentification multifacteur (MFA) est indispensable, mais les attaquants la contournent désormais via l'ingénierie sociale ou des attaques par saturation d'approbations (<strong style="color:var(--text)">MFA Fatigue</strong>). La tendance technique s'oriente vers le MFA basé sur le contexte (le "Number Matching", où l'utilisateur doit saisir sur son téléphone le numéro affiché à l'écran de connexion) et le déploiement de clés de sécurité physiques FIDO2 (Passkeys).</p>
-        <p>Sécuriser les accès VPN des prestataires et du personnel en télétravail à l'HPEVM avec ce type de MFA renforcé élimine la majorité des risques de compromission d'identifiants.</p>
-        <div class="tag-row"><span class="tag">MFA</span><span class="tag">FIDO2</span><span class="tag">Sécurité des accès</span><span class="tag">Passkeys</span></div>
-        <div class="sources-label">Sources</div>
-        <div class="veille-source-list">
-          <div class="veille-source"><a href="https://www.ssi.gouv.fr/guide/recommandations-relatives-a-lauthentification-multifacteur-et-aux-mots-de-passe/" target="_blank" rel="noopener">ANSSI — Recommandations relatives à l'authentification multifacteur — ssi.gouv.fr</a></div>
-          <div class="veille-source"><a href="https://fidoalliance.org/passkeys/?lang=fr" target="_blank" rel="noopener">FIDO Alliance — Les Passkeys et la technologie de connexion FIDO — fidoalliance.org</a></div>
-          <div class="veille-source"><a href="https://www.lemagit.fr/definition/Fatigue-du-MFA-Attaque-par-bombardement-de-notifications" target="_blank" rel="noopener">LeMagIT — Comprendre et contrer l'attaque par fatigue du MFA — lemagit.fr</a></div>
-        </div>
-      </div>
+          <div class="veille-card">
+            <div class="card-banner" style="background: #f5f3ff; color: #5b21b6;">Terraform</div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-badge">Terraform</span>
+                <span class="card-date">Avril 2025</span>
+              </div>
+              <h3>Infrastructure as Code (IaC) appliquée à la virtualisation</h3>
+              <p>L'Infrastructure as Code révolutionne le provisionnement des infrastructures. Avec des outils comme Terraform, les administrateurs définissent leurs clusters de machines virtuelles (VMware vSphere, Proxmox) sous forme de fichiers texte versionnés, simplifiant les plans de reprise d'activité.</p>
+              <div class="card-source">🔗 Source : <a href="https://www.terraform.io" target="_blank" rel="noopener">terraform.io</a></div>
+            </div>
+          </div>
 
+          <div class="veille-card">
+            <div class="card-banner" style="background: #f0fdf4; color: #166534;">Supervision</div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-badge">Zabbix / API</span>
+                <span class="card-date">Mai 2025</span>
+              </div>
+              <h3>Automatisation de la supervision réseau via APIs tierces</h3>
+              <p>Le couplage des gestionnaires de parc comme GLPI avec les outils de supervision (Zabbix, Centreon) via des scripts automatisés élimine la déclaration manuelle des serveurs. Tout nouvel équipement détecté est immédiatement inscrit au monitoring et configuré pour l'envoi d'alertes.</p>
+              <div class="card-source">🔗 Source : <a href="https://glpi-project.org" target="_blank" rel="noopener">glpi-project.org</a></div>
+            </div>
+          </div>
 
-      <div class="theme-title reveal" style="margin-top: 4rem;">Thème 2 : Automatisation &amp; Infrastructure as Code (IaC)</div>
-
-      <div class="veille-article reveal">
-        <div class="veille-article-header">
-          <h3>L'essor d'Ansible pour la gestion de configurations réseaux</h3>
-          <span class="veille-date">2024 – 2026</span>
-        </div>
-        <p><strong style="color:var(--text)">Ansible</strong> est devenu l'outil de référence pour les administrateurs système et réseau (NetDevOps). Sans agent à installer sur les machines cibles (utilisation de SSH ou WinRM), il permet d'automatiser le déploiement de serveurs Linux/Windows et la configuration d'équipements réseau (commutateurs Cisco, pare-feu, etc.) via des Playbooks écrits en YAML.</p>
-        <p>Pour un parc informatique d'envergure, Ansible garantit l'homogénéité des configurations logicielles, le déploiement rapide des correctifs de sécurité et évite les erreurs humaines dues aux configurations manuelles par interface graphique.</p>
-        <div class="tag-row"><span class="tag">Ansible</span><span class="tag">Automation</span><span class="tag">YAML</span><span class="tag">NetDevOps</span></div>
-        <div class="sources-label">Sources</div>
-        <div class="veille-source-list">
-          <div class="veille-source"><a href="https://www.redhat.com/fr/technologies/management/ansible" target="_blank" rel="noopener">Red Hat — Présentation et fonctionnement d'Ansible — redhat.com</a></div>
-          <div class="veille-source"><a href="https://docs.ansible.com/ansible/latest/network/index.html" target="_blank" rel="noopener">Ansible Docs — Network Automation with Ansible — docs.ansible.com</a></div>
-          <div class="veille-source"><a href="https://www.journaldunet.com/solutions/dsi/1519455-ansible-l-outil-d-automatisation-it-incontournable/" target="_blank" rel="noopener">Journal du Net — Pourquoi Ansible est devenu incontournable — journaldunet.com</a></div>
-        </div>
-      </div>
-
-      <div class="veille-article reveal">
-        <div class="veille-article-header">
-          <h3>Infrastructure as Code (IaC) avec Terraform</h3>
-          <span class="veille-date">2025 – 2026</span>
-        </div>
-        <p>L'Infrastructure as Code (IaC) consiste à définir, provisionner et gérer des infrastructures matérielles ou virtuelles à l'aide de fichiers de configuration textuels. <strong style="color:var(--text)">Terraform</strong> s'impose comme le leader agnostique, capable d'interagir aussi bien avec des infrastructures Cloud (Azure, AWS) que des solutions de virtualisation sur site comme <strong style="color:var(--text)">VMware vSphere</strong> ou <strong style="color:var(--text)">Proxmox VE</strong>.</p>
-        <p>L'IaC permet de versionner l'infrastructure avec Git, d'industrialiser les déploiements de machines virtuelles et de reconstruire un environnement complet en quelques minutes en cas de sinistre majeur.</p>
-        <div class="tag-row"><span class="tag">Terraform</span><span class="tag">IaC</span><span class="tag">Virtualisation</span><span class="tag">vSphere</span></div>
-        <div class="sources-label">Sources</div>
-        <div class="veille-source-list">
-          <div class="veille-source"><a href="https://www.terraform.io" target="_blank" rel="noopener">HashiCorp Terraform — Site Officiel — terraform.io</a></div>
-          <div class="veille-source"><a href="https://www.lebigdata.fr/terraform-tout-savoir" target="_blank" rel="noopener">LeBigData — Tout savoir sur l'Infrastructure as Code avec Terraform — lebigdata.fr</a></div>
-          <div class="veille-source"><a href="https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs" target="_blank" rel="noopener">Terraform Registry — Provider VMware vSphere — registry.terraform.io</a></div>
-        </div>
-      </div>
-
-      <div class="veille-article reveal">
-        <div class="veille-article-header">
-          <h3>L'automatisation du suivi de parc et de la supervision</h3>
-          <span class="veille-date">2025</span>
-        </div>
-        <p>L'interconnexion par API des outils de gestion de parc (<strong style="color:var(--text)">GLPI</strong>) et de supervision (<strong style="color:var(--text)">Zabbix</strong> ou <strong style="color:var(--text)">Centreon</strong>) représente une avancée majeure pour l'efficacité des équipes IT. Grâce à des scripts automatisés (Python ou PowerShell), la découverte d'un nouvel équipement réseau déclenche automatiquement sa création dans l'inventaire GLPI ainsi que l'activation de sa télémétrie dans l'outil de supervision.</p>
-        <p>Cette automatisation garantit un suivi en temps réel du cycle de vie des machines et assure qu'aucun serveur critique n'est oublié dans la chaîne de surveillance de l'infrastructure.</p>
-        <div class="tag-row"><span class="tag">GLPI</span><span class="tag">Zabbix</span><span class="tag">APIs</span><span class="tag">Supervision</span></div>
-        <div class="sources-label">Sources</div>
-        <div class="veille-source-list">
-          <div class="veille-source"><a href="https://glpi-project.org/fr/" target="_blank" rel="noopener">GLPI Project — Gestion de parc et ITSM open source — glpi-project.org</a></div>
-          <div class="veille-source"><a href="https://www.zabbix.com/fr" target="_blank" rel="noopener">Zabbix — Surveillance d'infrastructures réseaux et serveurs — zabbix.com</a></div>
-          <div class="veille-source"><a href="https://www.toolinux.com/?les-enjeux-de-l-automatisation-de-la-supervision-it" target="_blank" rel="noopener">Toolinux — Les enjeux de l'automatisation de la supervision IT — toolinux.com</a></div>
         </div>
       </div>
 
@@ -188,10 +312,9 @@
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = (i % 6) * 0.09 + 's'; // Mis à jour pour 6 éléments
+    document.querySelectorAll('.reveal').forEach((el) => {
       obs.observe(el);
     });
   </script>
 </body>
-</html>ard
+</html>
